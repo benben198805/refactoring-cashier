@@ -1,4 +1,4 @@
-package cc.xpbootcamp.refactor;
+package cn.xpbootcamp.refactor;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package cc.xpbootcamp.refactor;
+package cn.xpbootcamp.refactor;
 
 /**
  * OrderReceipt prints the details of order including customer name, address, description, quantity,
