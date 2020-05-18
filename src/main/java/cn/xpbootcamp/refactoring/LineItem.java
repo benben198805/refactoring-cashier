@@ -1,4 +1,4 @@
-package cn.xpbootcamp.refactor;
+package cn.xpbootcamp.refactoring;
 
 public class LineItem {
 	private String desc;

@@ -1,4 +1,4 @@
-package cn.xpbootcamp.refactor;
+package cn.xpbootcamp.refactoring;
 
 import org.junit.jupiter.api.Test;
 
