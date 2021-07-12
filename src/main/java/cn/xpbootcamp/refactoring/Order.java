@@ -3,9 +3,11 @@ package cn.xpbootcamp.refactoring;
 import java.util.List;
 
 public class Order {
-    String customerName;
-    String customerAddress;
-    List<LineItem> lineItems;
+    private static final String ORDER_HEADER = "======Printing Orders======\n";
+    private static final char SEPARATOR = '\t';
+    private final String customerName;
+    private final String customerAddress;
+    private final List<LineItem> lineItems;
 
     public Order(String customerName, String customerAddress, List<LineItem> lineItems) {
         this.customerName = customerName;
@@ -13,25 +15,25 @@ public class Order {
         this.lineItems = lineItems;
     }
 
-    public String getCustomerName() {
+    private String getCustomerName() {
         return customerName;
     }
 
-    public String getCustomerAddress() {
+    private String getCustomerAddress() {
         return customerAddress;
     }
 
-    public List<LineItem> getLineItems() {
+    private List<LineItem> getLineItems() {
         return lineItems;
     }
 
     private String stateHeader() {
-        return "======Printing Orders======\n" +
+        return ORDER_HEADER +
                 getCustomerName() +
                 getCustomerAddress();
     }
 
-    String state() {
+    public String state() {
         StringBuilder output = new StringBuilder(this.stateHeader());
         double totalSalesTax = 0d;
         double totalAmountWithTax = 0d;
@@ -42,13 +44,13 @@ public class Order {
             totalAmountWithTax += lineItem.getTotalAmountWithTax();
         }
 
-        stateFooter(output, totalSalesTax, totalAmountWithTax);
+        output.append(stateFooter(totalSalesTax, totalAmountWithTax));
         return output.toString();
     }
 
-    private void stateFooter(StringBuilder output, double totalSalesTax, double totalAmountWithTax) {
-        output.append("Sales Tax").append('\t').append(totalSalesTax);
-        output.append("Total Amount").append('\t').append(totalAmountWithTax);
+    private String stateFooter(double totalSalesTax, double totalAmountWithTax) {
+        return "Sales Tax" + SEPARATOR + totalSalesTax +
+                "Total Amount" + SEPARATOR + totalAmountWithTax;
     }
 
 }

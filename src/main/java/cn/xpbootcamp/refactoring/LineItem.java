@@ -1,10 +1,10 @@
 package cn.xpbootcamp.refactoring;
 
 public class LineItem {
-    public static final char SPERATOR = '\t';
-    private String description;
-    private double price;
-    private int quantity;
+    private static final char SEPARATOR = '\t';
+    private final String description;
+    private final double price;
+    private final int quantity;
 
     public LineItem(String description, double price, int quantity) {
         super();
@@ -13,37 +13,37 @@ public class LineItem {
         this.quantity = quantity;
     }
 
-    public String getDescription() {
+    private String getDescription() {
         return description;
     }
 
-    public double getPrice() {
+    private double getPrice() {
         return price;
     }
 
-    public int getQuantity() {
+    private int getQuantity() {
         return quantity;
     }
 
-    double totalAmount() {
+    private double totalAmount() {
         return price * quantity;
     }
 
-    double getSalesTax() {
+    public double getSalesTax() {
         return totalAmount() * .10;
     }
 
-    double getTotalAmountWithTax() {
+    public double getTotalAmountWithTax() {
         return totalAmount() + getSalesTax();
     }
 
-    String state() {
+    public String state() {
         return getDescription() +
-                SPERATOR +
+                SEPARATOR +
                 getPrice() +
-                SPERATOR +
+                SEPARATOR +
                 getQuantity() +
-                SPERATOR +
+                SEPARATOR +
                 totalAmount() +
                 '\n';
     }
