@@ -1,6 +1,7 @@
 package cn.xpbootcamp.refactoring;
 
 public class LineItem {
+    public static final char SPERATOR = '\t';
     private String description;
     private double price;
     private int quantity;
@@ -26,5 +27,24 @@ public class LineItem {
 
     double totalAmount() {
         return price * quantity;
+    }
+
+    double getSalesTax() {
+        return totalAmount() * .10;
+    }
+
+    double getTotalAmountWithTax() {
+        return totalAmount() + getSalesTax();
+    }
+
+    String state() {
+        return getDescription() +
+                SPERATOR +
+                getPrice() +
+                SPERATOR +
+                getQuantity() +
+                SPERATOR +
+                totalAmount() +
+                '\n';
     }
 }
